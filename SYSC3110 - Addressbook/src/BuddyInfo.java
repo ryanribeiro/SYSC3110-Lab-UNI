@@ -5,12 +5,6 @@ public class BuddyInfo {
 	String address;
 	String phoneNumber;
 	
-	BuddyInfo () {
-		this.setName("");
-		this.setAddress("");
-		this.setPhoneNumber("");
-	}
-	
 	BuddyInfo (String name, String address, String phoneNumber) {
 		this.setName(name);
 		this.setAddress(address);
@@ -19,10 +13,7 @@ public class BuddyInfo {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		BuddyInfo Homer = new BuddyInfo();
-		Homer.setName("Homer");
-		
-		System.out.println("Hello " + Homer.getName() + "!");
+		BuddyInfo Homer = new BuddyInfo("Homer", "Springfield", "613-555-5555");
 	}
 
 	public String getName() {
