@@ -39,5 +39,9 @@ public class BuddyInfo {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	
+	public String toString() {
+		return ("Name: " + name + " Address: " + address + " Phone number: " + phoneNumber);
+	}
 
 }

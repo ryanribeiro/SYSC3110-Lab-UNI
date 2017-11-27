@@ -1,12 +1,16 @@
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.*;
 import javax.swing.*;
 
-public class AddressBookGUI {
+public class AddressBookGUI implements ActionListener {
 	private ArrayList<AddressBook> addressBooks;
 	private JFrame frame;
 	private JMenuBar menuBar;
 	private JMenu addressBookMenu, buddyInfoMenu;
 	private JMenuItem create, save, display, add;
+	private JTextArea jTextArea;
 	
 	
 	public AddressBookGUI () {
@@ -17,6 +21,10 @@ public class AddressBookGUI {
 	public void addAddressBook(AddressBook newAddressBook) {
 		if (newAddressBook != null)
 			addressBooks.add(newAddressBook);
+		for (String temp : newAddressBook.getString()) {
+			jTextArea.append(temp);
+		}
+		jTextArea.updateUI();
 		if (addressBooks.size() == 1) {
 			buddyInfoMenu.setVisible(true);
 			menuBar.updateUI();
@@ -41,7 +49,6 @@ public class AddressBookGUI {
 		AddressBook addressBook = new AddressBook();
 		addressBook.addBuddy(new BuddyInfo("Ryan", "Kanata", "613-322-2555"));
 		addressBookGUI.addAddressBook(addressBook);
-		
 	}
 	
 	private void initGUI() {
@@ -53,25 +60,62 @@ public class AddressBookGUI {
 		save = new JMenuItem("Save");
 		display = new JMenuItem("Display");
 		add = new JMenuItem("Add");
-		
+		jTextArea = new JTextArea();
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(300, 400);
+		frame.setSize(600, 400);
 		frame.setLocationRelativeTo(null);		
 		
 		frame.setJMenuBar(menuBar);
 		menuBar.add(addressBookMenu);
 		menuBar.add(buddyInfoMenu);
+		
+		create.addActionListener(this);
+		save.addActionListener(this);
+		display.addActionListener(this);
+		add.addActionListener(this);
+		
 		addressBookMenu.add(create);
 		addressBookMenu.add(save);
 		addressBookMenu.add(display);
 		buddyInfoMenu.add(add);
 		
+		jTextArea.setEditable(false);
+		jTextArea.setLineWrap(true);
+		
 		if (addressBooks.size() == 0) {
 			buddyInfoMenu.setVisible(false);
 			menuBar.updateUI();
+		} else {
+			for (AddressBook aBook : addressBooks ) {
+				jTextArea.append(aBook.toString());
+			}
 		}
+		
+		frame.getContentPane().add(jTextArea, BorderLayout.CENTER);
 			
 		frame.setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String actionCommand = e.getActionCommand();
+		
+		switch (actionCommand) {
+			case "Create": 
+				System.out.println("Create");
+				break;
+			case "Save": 
+				System.out.println("Save");
+				break;
+			case "Display": 
+				System.out.println("Display");
+				break;
+			case "Add": 
+				System.out.println("Add");
+				break;
+			
+		}
+			
 	}
 }
