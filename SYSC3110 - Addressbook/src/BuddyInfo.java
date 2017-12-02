@@ -41,7 +41,7 @@ public class BuddyInfo {
 	}
 	
 	public String toString() {
-		return ("Name: " + name + " Address: " + address + " Phone number: " + phoneNumber);
+		return ("Name: " + name + " Address: " + address + " Phone number: " + phoneNumber + "\n");
 	}
 
 }

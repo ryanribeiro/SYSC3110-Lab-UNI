@@ -48,6 +48,7 @@ public class AddressBookGUI implements ActionListener {
 		AddressBookGUI addressBookGUI = new AddressBookGUI();
 		AddressBook addressBook = new AddressBook();
 		addressBook.addBuddy(new BuddyInfo("Ryan", "Kanata", "613-322-2555"));
+		addressBook.addBuddy(new BuddyInfo("Dylan", "Kanata", "613-555-2555"));
 		addressBookGUI.addAddressBook(addressBook);
 	}
 	
