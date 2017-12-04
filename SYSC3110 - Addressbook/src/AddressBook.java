@@ -1,5 +1,4 @@
 import java.util.*;
-import javax.swing.*;
 
 public class AddressBook {
 	private ArrayList<BuddyInfo> buddyInfo;

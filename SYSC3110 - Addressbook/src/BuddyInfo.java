@@ -12,8 +12,7 @@ public class BuddyInfo {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		BuddyInfo Homer = new BuddyInfo("Homer", "Springfield", "613-555-5555");
+		
 	}
 
 	public String getName() {
@@ -43,5 +42,15 @@ public class BuddyInfo {
 	public String toString() {
 		return ("Name: " + name + " Address: " + address + " Phone number: " + phoneNumber + "\n");
 	}
-
+	
+	public boolean equals(BuddyInfo buddy) {
+		if (buddy.getAddress().equals(address)) {
+			if (buddy.getName().equals(name)) {
+				if (buddy.getPhoneNumber().equals(phoneNumber)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }

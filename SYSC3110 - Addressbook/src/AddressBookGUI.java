@@ -44,6 +44,10 @@ public class AddressBookGUI implements ActionListener {
 		return addressBooks.size();
 	}
 	
+	public void display() {
+		jTextArea.setVisible(true);
+	}
+	
 	public static void main(String[] args) {
 		AddressBookGUI addressBookGUI = new AddressBookGUI();
 		AddressBook addressBook = new AddressBook();
@@ -94,8 +98,13 @@ public class AddressBookGUI implements ActionListener {
 		}
 		
 		frame.getContentPane().add(jTextArea, BorderLayout.CENTER);
-			
+		
+		jTextArea.setVisible(false);
 		frame.setVisible(true);
+	}
+	
+	public void add() {
+		
 	}
 
 	@Override
@@ -110,7 +119,7 @@ public class AddressBookGUI implements ActionListener {
 				System.out.println("Save");
 				break;
 			case "Display": 
-				System.out.println("Display");
+				display();
 				break;
 			case "Add": 
 				System.out.println("Add");
