@@ -2,6 +2,7 @@ package addressBook;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class BuddyInfo implements Serializable{
 
 	String name;
@@ -61,5 +62,15 @@ public class BuddyInfo implements Serializable{
 		String buddyInfoString;
 		buddyInfoString = (name + ":" + address + ":" + phoneNumber);
 		return buddyInfoString;
+	}
+	
+	public String toXML() {
+		String xmlText;
+		
+		xmlText = "<Name>" + name + "</Name>";
+		xmlText = xmlText + "<Address>" + address + "</Address>";
+		xmlText = xmlText + "<PhoneNumber>" + phoneNumber + "</PhoneNumber>";
+		
+		return xmlText;
 	}
 }

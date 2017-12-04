@@ -42,4 +42,13 @@ public class TestAddressBook {
 		
 		assertEquals("", true, openedBook.equals(testingBook));
 	}
+	
+	@Test
+	public void testXMLSaveOpen() {
+		AddressBook openedBook = new AddressBook();
+		testingBook.exportToXmlFile("xmlbook.xml");
+		openedBook = testingBook.importFromXmlFile("xmlbook.xml");
+		
+		assertEquals("", true, openedBook.equals(testingBook));
+	}
 }
