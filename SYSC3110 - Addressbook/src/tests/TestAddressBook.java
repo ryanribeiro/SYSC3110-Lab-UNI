@@ -28,9 +28,18 @@ public class TestAddressBook {
 	@Test
 	public void testSaveOpen() {
 		AddressBook openedBook = new AddressBook();
-		testingBook.save("testBook");
-		openedBook = testingBook.open("testBook");
+		testingBook.save("testBook.txt");
+		openedBook = testingBook.open("testBook.txt");
 
+		assertEquals("", true, openedBook.equals(testingBook));
+	}
+	
+	@Test
+	public void testSerializedSaveOpen() {
+		AddressBook openedBook = new AddressBook();
+		testingBook.serialSave("serialbook.ser");
+		openedBook = testingBook.serialOpen("serialbook.ser");
+		
 		assertEquals("", true, openedBook.equals(testingBook));
 	}
 }

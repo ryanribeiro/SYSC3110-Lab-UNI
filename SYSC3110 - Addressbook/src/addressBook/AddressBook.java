@@ -2,12 +2,17 @@ package addressBook;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.*;
 
-public class AddressBook {
+public class AddressBook implements Serializable{
 	private ArrayList<BuddyInfo> buddyInfo;
 	private ArrayList<String> buddyInfoString;
 
@@ -89,6 +94,48 @@ public class AddressBook {
 			e.printStackTrace();
 		}
 		return newAddressBook;
+	}
+	
+	public void serialSave(String fileName) {
+		try {
+			FileOutputStream fileOut = new FileOutputStream(fileName);
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(buddyInfo);
+			out.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+	}
+	
+	public AddressBook serialOpen(String fileName) {
+		AddressBook createdAddressBook = new AddressBook();
+		ArrayList<BuddyInfo> openedBuddyInfo = new ArrayList<>();
+		
+		try {
+			FileInputStream fileIn = new FileInputStream(fileName);
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			openedBuddyInfo = (ArrayList<BuddyInfo>) in.readObject();
+			in.close();
+			fileIn.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		for (BuddyInfo buddy : openedBuddyInfo) {
+			createdAddressBook.addBuddy(buddy);
+		}
+		return createdAddressBook;
 	}
 
 	public static void main(String[] args) {

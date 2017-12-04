@@ -1,6 +1,8 @@
 package addressBook;
 
-public class BuddyInfo {
+import java.io.Serializable;
+
+public class BuddyInfo implements Serializable{
 
 	String name;
 	String address;
