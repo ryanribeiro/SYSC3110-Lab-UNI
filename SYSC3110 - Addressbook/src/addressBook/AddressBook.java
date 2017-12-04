@@ -1,3 +1,4 @@
+package addressBook;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -32,17 +33,31 @@ public class AddressBook {
 		return buddyInfoString;
 	}
 	
-//	public StringBuffer exportAddressBook() {
-//		StringBuffer addressBookStringBuffer = new StringBuffer();
-//		for (BuddyInfo buddy : buddyInfo) {
-//			addressBookStringBuffer.append(buddy.exportBuddyInfo() + "%");
-//		}
-//		return addressBookStringBuffer;
-//	}
+	public BuddyInfo getBuddy(int index) {
+		return buddyInfo.get(index);
+	}
 	
-	public void save() {
+	public int size() {
+		return buddyInfo.size();
+	}
+	
+	public boolean equals(AddressBook book) {
+		int i;
+		if (this.size() != book.size()) {
+			return false;
+		} else {
+			for (i = 0; i < this.size(); i++) {
+				if (this.getBuddy(i).equals(book.getBuddy(i)) == false) {
+					return false;
+				}
+			}
+			return true;
+		}
+	}
+	
+	public void save(String fileName) {
 		try {
-			BufferedWriter out = new BufferedWriter(new FileWriter("addressBook.txt"));
+			BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
 			for (BuddyInfo buddy : buddyInfo) {
 				out.write(buddy.exportBuddyInfo());
 				out.write(System.getProperty("line.separator"));
@@ -76,21 +91,6 @@ public class AddressBook {
 	}
 	
 	public static void main(String[] args) {
-		BuddyInfo test = new BuddyInfo("Ryan","Kanata","123");
-		BuddyInfo test2 = new BuddyInfo("Dylan","Kanata","123");
-		BuddyInfo test3 = new BuddyInfo("Meagan","Kanata","123");
-		BuddyInfo test4 = new BuddyInfo("Alex","Kanata","123");
-		BuddyInfo test5 = new BuddyInfo("Beverley","Kanata","123");
-		AddressBook testbook = new AddressBook();
-		AddressBook testOpenBook = new AddressBook();
-		testbook.addBuddy(test);
-		testbook.addBuddy(test2);
-		testbook.addBuddy(test3);
-		testbook.addBuddy(test4);
-		testbook.addBuddy(test5);
-		//System.out.println(testbook.getString());
-		testbook.save();
-		testOpenBook = testbook.open("addressBook.txt");
-		System.out.println(testOpenBook.getString());
+		
 	}
 }

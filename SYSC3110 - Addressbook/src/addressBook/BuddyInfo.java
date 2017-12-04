@@ -1,3 +1,4 @@
+package addressBook;
 
 public class BuddyInfo {
 
@@ -5,7 +6,7 @@ public class BuddyInfo {
 	String address;
 	String phoneNumber;
 	
-	BuddyInfo (String name, String address, String phoneNumber) {
+	public BuddyInfo (String name, String address, String phoneNumber) {
 		this.setName(name);
 		this.setAddress(address);
 		this.setPhoneNumber(phoneNumber);
