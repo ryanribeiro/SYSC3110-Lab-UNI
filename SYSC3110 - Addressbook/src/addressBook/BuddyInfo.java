@@ -5,15 +5,15 @@ public class BuddyInfo {
 	String name;
 	String address;
 	String phoneNumber;
-	
-	public BuddyInfo (String name, String address, String phoneNumber) {
+
+	public BuddyInfo(String name, String address, String phoneNumber) {
 		this.setName(name);
 		this.setAddress(address);
 		this.setPhoneNumber(phoneNumber);
 	}
-	
+
 	public static void main(String[] args) {
-		
+
 	}
 
 	public String getName() {
@@ -39,11 +39,11 @@ public class BuddyInfo {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	
+
 	public String toString() {
 		return ("Name: " + name + " Address: " + address + " Phone number: " + phoneNumber + "\n");
 	}
-	
+
 	public boolean equals(BuddyInfo buddy) {
 		if (buddy.getAddress().equals(address)) {
 			if (buddy.getName().equals(name)) {
@@ -54,10 +54,10 @@ public class BuddyInfo {
 		}
 		return false;
 	}
-	
+
 	public String exportBuddyInfo() {
 		String buddyInfoString;
-		buddyInfoString = (name + ":" + address + ":" + phoneNumber);	
+		buddyInfoString = (name + ":" + address + ":" + phoneNumber);
 		return buddyInfoString;
 	}
 }
