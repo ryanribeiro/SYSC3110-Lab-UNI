@@ -2,7 +2,7 @@ package tests;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
+import org.junit.Test;
 import org.junit.Before;
 
 import addressBook.AddressBook;
@@ -25,11 +25,11 @@ public class TestAddressBook {
 		testingBook.addBuddy(test5);
 	}
 
-	@After
+	@Test
 	public void testSaveOpen() {
 		AddressBook openedBook = new AddressBook();
 		testingBook.save("testBook");
-		openedBook = openedBook.open("testBook");
+		openedBook = testingBook.open("testBook");
 
 		assertEquals("", true, openedBook.equals(testingBook));
 	}
