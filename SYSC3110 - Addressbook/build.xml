@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<project name ="Hello" default ="print message">
+	<target name ="print message">
+		<echo message ="Hello from Ant!"/>
+	</target>
+	<target name="packaging">
+		<mkdir dir="build/jar"/>
+		<jar destfile="build/jar/lab10.jar">
+			<fileset dir="bin"/>
+			<fileset dir="src"/>
+			<manifest>
+				<attribute name="Main-Class" value="addressBook.AddressBook"/>
+			</manifest>
+		</jar>
+	</target>
+</project>
