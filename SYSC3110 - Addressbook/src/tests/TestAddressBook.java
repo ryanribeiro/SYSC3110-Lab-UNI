@@ -2,6 +2,10 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import org.junit.Test;
 import org.junit.Before;
 
@@ -27,28 +31,46 @@ public class TestAddressBook {
 
 	@Test
 	public void testSaveOpen() {
+		String fileName = "testBook.txt";
 		AddressBook openedBook = new AddressBook();
-		testingBook.save("testBook.txt");
-		openedBook = testingBook.open("testBook.txt");
+		testingBook.save(fileName);
+		openedBook = testingBook.open(fileName);
 
 		assertEquals("", true, openedBook.equals(testingBook));
+		try {
+			Files.deleteIfExists(Paths.get(fileName));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
 	public void testSerializedSaveOpen() {
+		String fileName = "serialbook.ser";
 		AddressBook openedBook = new AddressBook();
-		testingBook.serialSave("serialbook.ser");
-		openedBook = testingBook.serialOpen("serialbook.ser");
+		testingBook.serialSave(fileName);
+		openedBook = testingBook.serialOpen(fileName);
 		
 		assertEquals("", true, openedBook.equals(testingBook));
+		try {
+			Files.deleteIfExists(Paths.get(fileName));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
 	public void testXMLSaveOpen() {
+		String fileName = "xmlbook.xml";
 		AddressBook openedBook = new AddressBook();
-		testingBook.exportToXmlFile("xmlbook.xml");
-		openedBook = testingBook.importFromXmlFile("xmlbook.xml");
+		testingBook.exportToXmlFile(fileName);
+		openedBook = testingBook.importFromXmlFile(fileName);
 		
 		assertEquals("", true, openedBook.equals(testingBook));
+		try {
+			Files.deleteIfExists(Paths.get(fileName));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
