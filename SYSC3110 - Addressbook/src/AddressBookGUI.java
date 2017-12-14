@@ -28,7 +28,7 @@ public class AddressBookGUI implements ActionListener {
 		if (addressBooks.size() == 1) {
 			buddyInfoMenu.setVisible(true);
 			menuBar.updateUI();
-		}
+		} 
 	}
 	
 	public void removeAddressBook(int index) {
